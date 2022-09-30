@@ -1,77 +1,41 @@
-import java.util.Stack;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
-public class question3 {
-    static Stack<Integer> st = new Stack<Integer>();
-    static Integer minEle = Integer.MAX_VALUE;
-
-    public static void pushEle(int num) {
-        if (st.empty()) {
-            minEle = num;
-            st.push(num);
-            return;
-        }
-        if (num < minEle) {
-            st.push(2 * num - minEle);
-            minEle = num;
-        } else
-            st.push(num);
-
+class Employee1{
+    String name,designation;
+    int age,salary;
+    public Employee1(String n,String d,int a){
+        this.designation = d;
+        this.age = a;
+        this.name = n;
     }
-
-    public static void popEle() {
-        if (st.empty()) {
-            System.out.println("Can't pop the element");
-            return;
-        }
-        int top = st.pop();
-        if (top < minEle) {
-            minEle = 2 * minEle - top;
+    public int setSalary(int s){
+        this.salary = s;
+        return s;
+    }
+    public int getAge(){
+        return this.age;
+    }
+    public String getName(){
+        return this.name;
+    }
+    public String getDesignation(){
+        return this.designation;
+    }
+}
+public class question4 {
+    public static void main(String[] args){
+        Employee1 e1 = new Employee1("Yogesh","SE",21);
+        Employee1 e2 = new Employee1("Yogesh","SE2",22);
+        Employee1 e3 = new Employee1("Yogesh","SE3",23);
+        Employee1 e4 = new Employee1("Yogesh","SE4",24);
+        Map<Employee1,Integer> mp = new HashMap<Employee1, Integer>();
+        mp.put(e1, e1.setSalary(10000));
+        mp.put(e2, e2.setSalary(20000));
+        mp.put(e3, e3.setSalary(30000));
+        mp.put(e4, e4.setSalary(40000));
+        for(Employee1 emp: mp.keySet()){
+            System.out.println(emp.getName()+"("+emp.designation+"-"+emp.getAge()+") "+mp.get(emp));
         }
     }
-
-    public static int getMin() {
-        if (st.empty())
-            return -1;
-        return minEle;
-    }
-
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-
-        while (true) {
-            
-            System.out.println("1 : Push Element");
-            System.out.println("2 : Pop Element");
-            System.out.println("3 : Get Min Element");
-            System.out.println("4 : Exit");
-            
-            System.out.print("Enter any above choices :  ");
-            int n = sc.nextInt();
-
-            switch (n) {
-                case 1:
-                    System.out.println("Enter the number : ");
-                    int num = sc.nextInt();
-                    System.out.println();
-                    pushEle(num);
-                    break;
-                case 2:
-                    popEle();
-                    break;
-                case 3:
-                    System.out.println("Minimum number is : " + getMin() + "\n");
-                    
-                    break;
-                case 4:
-                    System.exit(0);
-                    break;
-                default:
-                    System.out.println("invalid Choice");
-                    break;
-            }
-        }
-
-    }
-
 }
