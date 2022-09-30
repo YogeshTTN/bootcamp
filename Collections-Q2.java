@@ -31,10 +31,10 @@ public class question2 {
     public static void main(String[] args){
         ArrayList<Employeee> al = new ArrayList<Employeee>();
         Employeee e;
-        al.add(new Employeee("Rakesh","Anjani",22,33000));
-        al.add(new Employeee("Prashant","Dubey",22,34000));
-        al.add(new Employeee("Sonali","Raghuwansi",23,32000));
-        al.add(new Employeee("Yogesh","Kumar",21,34000));
+        al.add(new Employeee("Yogesh","1",21,10000));
+        al.add(new Employeee("Yogesh","2",22,20000));
+        al.add(new Employeee("Yogesh","3",23,30000));
+        al.add(new Employeee("Yogesh","4",24,40000));
         System.out.println("Sorting by name:-");
         Collections.sort(al);
         for(Employeee e1 : al){
